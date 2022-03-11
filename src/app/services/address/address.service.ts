@@ -13,8 +13,6 @@ import { AuthService } from '../auth/auth.service';
 })
 export class AddressService {
 
-  // apiURLAddress = environment.apiURL + 'address';
-
   uid: string;
   user: any;
 

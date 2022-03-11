@@ -27,8 +27,6 @@ export class AuthUserId {
 })
 export class AuthService {
 
-  apiURLUsers = environment.apiURL + 'users';
-
   // private currentUserSource!: BehaviorSubject<any>;
   // public currentUser$: Observable<User>;
   // public currentUser$ = this.currentUserSource.asObservable();

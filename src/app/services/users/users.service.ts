@@ -9,24 +9,22 @@ import { environment } from 'src/environments/environment';
 })
 export class UsersService {
 
-  apiURLUsers = environment.apiURL + 'users';
-
   constructor(
     private http: HttpClient
   ) { }
 
-  // get all users
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiURLUsers);
-  }
+  // // get all users
+  // getUsers(): Observable<User[]> {
+  //   return this.http.get<User[]>(this.apiURLUsers);
+  // }
 
-  // get single user
-  getUser(userId: string): Observable<User> {
-    return this.http.get<User>(`${this.apiURLUsers}/${userId}`);
-  }
+  // // get single user
+  // getUser(userId: string): Observable<User> {
+  //   return this.http.get<User>(`${this.apiURLUsers}/${userId}`);
+  // }
 
-  // add new user
-  createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.apiURLUsers, user);
-  }
+  // // add new user
+  // createUser(user: User): Observable<User> {
+  //   return this.http.post<User>(this.apiURLUsers, user);
+  // }
 }

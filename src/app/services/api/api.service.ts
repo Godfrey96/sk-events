@@ -13,10 +13,6 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-  apiURLCategories = environment.apiURL + 'categories';
-  apiURLEvents = environment.apiURL + 'events';
-  apiURLTickets = environment.apiURL + 'tickets';
-
   radius = 10; // in km
   firestore = firebase.firestore();
   GeoFirestore = geofirestore.initializeApp(this.firestore);
