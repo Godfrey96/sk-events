@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <p *ngIf="events.length > 0"></p>
+  <ion-list class="list" lines="none" *ngFor="let event of events">
+
+    <ion-item>
+      <ion-label class="list-label">
+        <h1>{{ event?.eventName }}</h1><br />
+        <h3></h3>
+        <p class="date">Date: {{ event?.checkIn | date: 'short' }}</p>
+      </ion-label>
+    </ion-item>
+    <br />
+
+  </ion-list>
+  <p style="text-align: center;" class="info-text mat-body-1" *ngIf="events.length <= 0">
+    You currently don't have active events
+  </p>
+
+</ion-content>

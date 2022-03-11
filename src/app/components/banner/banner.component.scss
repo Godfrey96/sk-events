@@ -1,0 +1,13 @@
+ion-slides {
+  --bullet-background: black;
+  height: 40vh;
+  div {
+    height: 30vh;
+    width: 94%;
+    margin: auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+  }
+}

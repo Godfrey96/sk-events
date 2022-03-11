@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Events</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ events?.length }}
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Tickets</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ tickets.length }}
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Orders</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ orders.length }}
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <!-- <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Tickets</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          5
+        </ion-card-content>
+      </ion-card>
+    </ion-col> -->
+  </ion-row>
+
+</ion-content>

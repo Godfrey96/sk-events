@@ -1,0 +1,11 @@
+<ion-item>
+  <div class="qty-selector">
+    <ion-icon name="remove-outline" (click)="quantityMinus()"></ion-icon>
+    <ion-text class="ion-text-center quantity" color="success">{{item?.quantity}}</ion-text>
+    <ion-icon name="add-outline" (click)="quantityPlus()"></ion-icon>
+  </div>
+
+  <ion-text slot="end" color="dark" class="ion-text-right price">
+    R{{(item?.price * item.quantity) | number: '0.2-2'}}
+  </ion-text>
+</ion-item>

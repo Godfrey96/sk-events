@@ -1,0 +1,17 @@
+ion-searchbar {
+  --border-radius: 0.8rem;
+}
+
+ion-item {
+  ion-button {
+    --background: #dc143c;
+  }
+  ion-icon {
+    color: #dc143c;
+  }
+  ion-text {
+    h5 {
+      color: #dc143c;
+    }
+  }
+}

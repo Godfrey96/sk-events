@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ng-container>
+    <ion-list>
+      <!-- <ion-list-header>
+          <ion-label>PAST TICKETS</ion-label>
+        </ion-list-header> -->
+      <ion-text class="ion-text-center" *ngIf="!orders || orders?.length === 0">
+        <p>No Order found Yet</p>
+      </ion-text>
+
+      <ion-item-group class="borderBottom"></ion-item-group>
+
+      <ion-item-group>
+        <ion-item class="borderBottom top" lines="none" *ngFor="let order of orders" class="dashedBorderBottom">
+          <ion-label>
+            {{ order?.firstname }} - {{ order?.lastname }}
+            <ion-text>
+              <p>
+                {{ order?.grandTotal | currency: 'R' }}
+              </p>
+            </ion-text>
+          </ion-label>
+          <ion-note slot="end" color="dark">
+            {{ order?.paid }}
+            <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
+          </ion-note>
+        </ion-item>
+      </ion-item-group>
+
+
+
+    </ion-list>
+  </ng-container>
+
+</ion-content>

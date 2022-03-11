@@ -1,0 +1,31 @@
+<ion-grid>
+  <ion-row class="ion-padding-horizontal dashedBorderBottom">
+    <img [src]="data?.cover" alt="" />
+  </ion-row>
+  <ion-row class="ion-padding-horizontal dashedBorderBottom">
+    <ion-col size="6">
+      <ion-label class="ion-text-center">
+        <ion-text>
+          <p class="colorText">
+            <ion-icon name="calendar-outline"></ion-icon>
+            {{ data?.checkIn | date: 'd' }} - {{ data?.checkOut | date: 'd MMM, y' }}
+          </p>
+        </ion-text>
+      </ion-label>
+    </ion-col>
+    <!-- <ion-col size="2">
+      <ion-label class="ion-text-center">
+      </ion-label>
+    </ion-col> -->
+    <ion-col size="6">
+      <ion-label class="ion-text-center">
+        <ion-text>
+          <p class="colorText">
+            <ion-icon name="time-outline"></ion-icon>
+            {{ data?.checkIn | date: 'shortTime' }} - {{ data?.checkOut | date: 'shortTime' }}
+          </p>
+        </ion-text>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>

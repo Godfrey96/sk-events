@@ -1,0 +1,29 @@
+ion-item {
+  .qty-selector {
+    display: flex;
+    background: var(--ion-color-medium);
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 5px;
+    padding: 0.5rem 0.5rem;
+
+    ion-icon {
+      color: var(--ion-color-white);
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .quantity {
+      color: var(--ion-color-white);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
+  ion-text {
+    color: var(--ion-color-dark);
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}

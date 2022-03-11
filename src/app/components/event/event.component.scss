@@ -1,0 +1,31 @@
+ion-item {
+  font-size: 0.8rem;
+  ion-thumbnail {
+    height: 14vh;
+    width: 20vw;
+    img {
+      border-radius: 10px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  ion-text {
+    color: #eb445a;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-weight: bold;
+  }
+  h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 0.5rem;
+  }
+  span {
+    margin-top: 1.2rem;
+    color: #92949c;
+    ion-icon {
+      color: #dc143c;
+    }
+  }
+}

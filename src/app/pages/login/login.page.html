@@ -1,0 +1,77 @@
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-label color="white" class="ion-margin ion-padding-start">
+      Welcome
+      <p>
+        <ion-text color="white" class="ion-margin ion-padding-start">
+          Back
+        </ion-text>
+      </p>
+    </ion-label>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+
+  <ion-row>
+
+    <ion-list lines="full">
+      <ion-list-header class="ion-margin">
+        <ion-label>Sign In</ion-label>
+      </ion-list-header>
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-icon name="mail" slot="start"></ion-icon>
+              <ion-input type="email" name="email" ngModel email #emailCtrl="ngModel" placeholder="Email" required>
+              </ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!emailCtrl.valid && emailCtrl.touched" class="ion-text-center">
+              <p class="errorMsg">* Please enter a valid email address</p>
+            </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-icon name="key" slot="start"></ion-icon>
+              <ion-icon slot="end" (click)="changeType()" [name]="type ? 'eye-outline' : 'eye-off-outline'">
+              </ion-icon>
+              <ion-input [type]="type ? 'password' : 'text'" name="password" ngModel #passwordCtrl="ngModel"
+                placeholder="Password" required minlength="8">
+              </ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!passwordCtrl.valid && passwordCtrl.touched" class="ion-text-center">
+              <p class="errorMsg">* Password must be of minimum 8 characters long.</p>
+            </ion-text>
+          </div>
+
+          <ion-button *ngIf="!isLogin" [disabled]="!f.valid" expand="block" type="submit">
+            SIGN IN
+          </ion-button>
+
+          <div class="ion-text-center" *ngIf="isLogin">
+            <ion-button shape="round" [disabled]="!f.valid">
+              <ion-spinner name="circles"></ion-spinner>
+            </ion-button>
+          </div>
+
+        </form>
+
+        <ion-item lines="none" class="ion-padding-top">
+          <ion-text color="danger" slot="start" routerLink="/login/forgot-password">
+            Forgot password?
+          </ion-text>
+          <ion-text color="dark" slot="end" routerLink="/login/choose">
+            <strong>Sign Up</strong>
+          </ion-text>
+        </ion-item>
+
+      </ion-item-group>
+    </ion-list>
+  </ion-row>
+
+</ion-footer>

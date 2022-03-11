@@ -1,0 +1,16 @@
+<ion-item-group class="borderBottom">
+  <ion-item lines="none" class="dashedBorderBottom">
+    <ion-label>
+      {{ order?.event?.eventName }}
+      <ion-text>
+        <p>
+          {{ order?.grandTotal | currency: 'R' }}
+        </p>
+      </ion-text>
+    </ion-label>
+    <ion-note slot="end" color="dark">
+      {{ order?.status }}
+      <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
+    </ion-note>
+  </ion-item>
+</ion-item-group>

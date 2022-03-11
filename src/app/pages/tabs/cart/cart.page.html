@@ -1,0 +1,103 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title color="tertiary">cart</ion-title>
+    <ion-buttons slot="start" *ngIf="urlCheck && urlCheck !== 'tabs'">
+      <ion-back-button [defaultHref]="getPreviousUrl()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cart</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-empty-screen *ngIf="!model?.event"></app-empty-screen>
+
+  <ng-container *ngIf="model?.event">
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label>
+          <h4>{{ model?.event?.eventName }}</h4>
+        </ion-label>
+      </ion-item>
+      <app-cart-item *ngFor="let item of model?.items; let i = index" [item]="item" [index]="i"
+        (add)="quantityPlus($event)" (minus)="quantityMinus($event)"></app-cart-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item lines="full"></ion-item>
+      <ion-list-header>
+        <ion-label>Your Details</ion-label>
+      </ion-list-header>
+      <ion-item lines="full">
+        <!-- <ion-icon slot="start" name="list-outline"></ion-icon> -->
+        <ion-input type="text" placeholder="Firstname" [(ngModel)]="firstname"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <!-- <ion-icon slot="start" name="list-outline"></ion-icon> -->
+        <ion-input type="text" placeholder="Lastname" [(ngModel)]="lastname"></ion-input>
+      </ion-item>
+      <ion-item lines="full" class="borderBottom">
+        <!-- <ion-icon slot="start" name="list-outline"></ion-icon> -->
+        <ion-input type="text" placeholder="Phone" [(ngModel)]="phone"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="borderBottom">
+      <ion-list-header>
+        <ion-label>Bill Details</ion-label>
+      </ion-list-header>
+      <ion-item lines="none">
+        <ion-label color="dark">Ticket Total</ion-label>
+        <ion-text slot="end" color="dark">
+          R{{ model?.totalPrice | number: '0.2-2' }}
+        </ion-text>
+      </ion-item>
+      <ion-item lines="full"></ion-item>
+      <ion-item lines="none">
+        <ion-label color="dark">Total Amount To Pay</ion-label>
+        <ion-text slot="end" color="dark">
+          <h5>R{{model?.grandTotal | number: '0.2-2'}}</h5>
+        </ion-text>
+      </ion-item>
+    </ion-list>
+
+  </ng-container>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="model?.event">
+  <ion-toolbar>
+    <ion-row *ngFor="let item of model?.items; let i = index">
+      <div *ngIf="item.paymentType === 'card'">
+        <ion-item lines="none">
+          <ion-col size="12" class="ion-text-center" (click)="makePayment()">
+            <ion-button class="colStyle">
+              Pay Now
+            </ion-button>
+          </ion-col>
+        </ion-item>
+      </div>
+      <div *ngIf="item.paymentType === 'cash'">
+        <ion-item lines="none">
+          <ion-col size="12" class="ion-text-center" (click)="makeFreePayment()">
+            <ion-button class="colStyle">
+              Pay Now
+            </ion-button>
+          </ion-col>
+        </ion-item>
+      </div>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col size="12" class="ion-text-center" (click)="makeFreePayment()">
+        <button expand="full">Pay Now Free</button>
+      </ion-col>
+    </ion-row> -->
+  </ion-toolbar>
+</ion-footer>

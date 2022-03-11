@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ng-container>
+    <ion-list>
+      <!-- <ion-item lines="none" class="borderBottom"></ion-item> -->
+      <ion-item lines="full" routerLink="/edit-profile">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <h4>Personal Details</h4>
+      </ion-item>
+
+      <ion-item lines="full" class="borderBottom" routerLink="/tickets">
+        <ion-icon name="ticket-outline" slot="start"></ion-icon>
+        <h4>My Tickets</h4>
+      </ion-item>
+
+      <ion-item lines="full" (click)="confirmLogout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <h4>Logout</h4>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+</ion-content>

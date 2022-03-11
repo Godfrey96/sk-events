@@ -1,0 +1,109 @@
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-label color="white" class="ion-margin ion-padding-start">
+      Customer
+      <p>
+        <ion-text color="white" class="ion-margin ion-padding-start">
+          Sign Up
+        </ion-text>
+      </p>
+    </ion-label>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+
+  <ion-row>
+
+    <ion-list lines="full">
+      <ion-list-header class="ion-margin">
+        <ion-label>Sign Up</ion-label>
+      </ion-list-header>
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <form #f1="ngForm" (ngSubmit)="onSubmit(f1)">
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-icon name="person" slot="start"></ion-icon>
+              <ion-input type="text" name="firstname" ngModel #firstname="ngModel" placeholder="Firstname" required>
+              </ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!firstname.valid && firstname.touched">
+              <p class="errorMsg">* Please enter your firstname</p>
+            </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-icon name="person" slot="start"></ion-icon>
+              <ion-input type="text" name="lastname" ngModel #lastname="ngModel" placeholder="Lastname" required>
+              </ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!lastname.valid && lastname.touched">
+              <p class="errorMsg">* Please enter your lastname</p>
+            </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-icon name="mail" slot="start"></ion-icon>
+              <ion-input type="email" name="email" ngModel email #emailCtrl="ngModel" placeholder="Email" required>
+              </ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!emailCtrl.valid && emailCtrl.touched" class="ion-text-center">
+              <p class="errorMsg">* Please enter a valid email address</p>
+            </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-icon name="phone-portrait" slot="start"></ion-icon>
+              <ion-input type="tel" name="phone" ngModel #phone="ngModel" placeholder="Phone" minlength="10"
+                maxlength="10" required>
+              </ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!phone.valid && phone.touched">
+              <p class="errorMsg">* Please enter a valid phone number</p>
+            </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-icon name="lock-closed" slot="start"></ion-icon>
+              <ion-input type="password" name="password" ngModel #password="ngModel" placeholder="Password"
+                minlength="8" required>
+              </ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!password.valid && password.touched">
+              <p class="errorMsg">* Password must be of minimum 8 characters long.</p>
+            </ion-text>
+          </div>
+
+          <ion-button *ngIf="!isLoading" [disabled]="!f1.valid" expand="block" type="submit">
+            SIGN UP
+          </ion-button>
+
+          <div class="ion-text-center" *ngIf="isLoading">
+            <ion-button shape="round" [disabled]="!f1.valid">
+              <ion-spinner name="circles"></ion-spinner>
+            </ion-button>
+          </div>
+
+        </form>
+
+        <ion-item lines="none" class="ion-padding-top">
+          <ion-text color="danger" slot="start">
+            Already have an account?
+          </ion-text>
+          <ion-text color="dark" slot="end" routerLink="/login">
+            <strong>Sign In</strong>
+          </ion-text>
+        </ion-item>
+
+      </ion-item-group>
+    </ion-list>
+  </ion-row>
+
+</ion-footer>

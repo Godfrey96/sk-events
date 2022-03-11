@@ -1,0 +1,68 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{ data?.eventName }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-event-detail [data]="data" [isLoading]="isLoading"></app-event-detail>
+
+  <ion-row class="ion-margin-top">
+    <ion-col>
+      <ion-label>
+        <h4>Description</h4>
+        <ion-text>
+          <!-- <p>{{data?.description | slice: 0:50}}</p> -->
+          <p>{{ (data?.description)? (data?.description | slice:0:500)+'...':(data?.description) }}</p>
+        </ion-text>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-margin-top">
+    <ion-col>
+      <ion-label>
+        <h4>Address</h4>
+        <ion-text>
+          <!-- <p>{{data?.description | slice: 0:50}}</p> -->
+          <p>{{ data?.address }}</p>
+        </ion-text>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+
+
+  <!-- <ion-row>
+    <ion-col>
+      <div id="map" #map></div>
+    </ion-col>
+  </ion-row> -->
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ng-container *ngFor="let item of items; let i = index">
+      <div *ngIf="item?.paymentType === 'cash'" class="btnBottom">
+        <ion-label color="white">
+          <h4>FREE</h4>
+        </ion-label>
+        <button slot="end" fill="clear" color="white" (click)="saveItemToCartFree(item)">
+          <span>GET TICKET</span>
+        </button>
+      </div>
+      <div *ngIf="item?.paymentType === 'card'" class="btnBottom">
+        <ion-label color="white">
+          <h4>{{ item?.price | currency: 'R' }}</h4>
+        </ion-label>
+        <button slot="end" fill="clear" color="white" (click)="saveItemToCart(item)">
+          <span>GET TICKET</span>
+        </button>
+      </div>
+    </ng-container>
+  </ion-toolbar>
+</ion-footer>

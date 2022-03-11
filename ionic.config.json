@@ -1,0 +1,7 @@
+{
+  "name": "SK-Event App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

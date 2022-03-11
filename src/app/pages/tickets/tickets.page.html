@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Tickets</ion-title>
+    <ion-buttons slot="start">
+      <ion-button fill="clear">
+        <ion-back-button defaultHref="/tabs/account"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ng-container>
+    <ion-list>
+      <!-- <ion-list-header>
+        <ion-label>PAST TICKETS</ion-label>
+      </ion-list-header> -->
+      <ion-text class="ion-text-center" *ngIf="!orders || orders?.length === 0">
+        <p>No Tickets found Yet</p>
+      </ion-text>
+
+      <app-orders *ngFor="let order of orders" [order]="order"></app-orders>
+
+    </ion-list>
+  </ng-container>
+
+</ion-content>

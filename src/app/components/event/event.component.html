@@ -1,0 +1,15 @@
+<ion-item lines="none">
+  <ion-thumbnail slot="start">
+    <img [src]="event?.cover ? event.cover : fallbackImage" (error)="onImgError($event)" alt="" />
+  </ion-thumbnail>
+  <ion-label>
+    <ion-text>
+      {{ event?.checkIn | date: 'd MMM, y' }}
+    </ion-text>
+    <h4>{{ event?.eventName }}</h4>
+    <span>
+      <ion-icon name="location"></ion-icon>
+      {{ event?.address }}
+    </span>
+  </ion-label>
+</ion-item>

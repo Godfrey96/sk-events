@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- <ion-datetime presentation="time"></ion-datetime> -->
+
+  <form #f1="ngForm" (ngSubmit)="onSubmit(f1)">
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>Event Details</ion-label>
+      </ion-list-header>
+
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-input type="text" name="eventName" ngModel #eventName="ngModel" placeholder="Event Name" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!eventName.valid && eventName.touched">
+        <p class="errorMsg">* Please enter your event name</p>
+      </ion-text>
+
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-textarea type="text" name="description" ngModel #description="ngModel" placeholder="Description">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label>Check-In</ion-label>
+        <ion-datetime presentation="date" name="checkIn" ngModel #checkIn="ngModel" required>
+        </ion-datetime>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!checkIn.valid && checkIn.touched" class="ion-text-center">
+        <p class="errorMsg">* Select Check-in Date.</p>
+      </ion-text>
+
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label>Check-Out</ion-label>
+        <ion-datetime presentation="date" name="checkOut" ngModel #checkOut="ngModel" required>
+        </ion-datetime>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!checkOut.valid && checkOut.touched" class="ion-text-center">
+        <p class="errorMsg">* Select Check-out Date.</p>
+      </ion-text>
+
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-input type="number" name="price" ngModel #price="ngModel" placeholder="Price" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!price.valid && price.touched">
+        <p class="errorMsg">* Please enter price</p>
+      </ion-text>
+
+      <!-- <ion-item color="light" class="ion-margin-bottom">
+        <ion-label>Select Category</ion-label>
+        <ion-select name="category" ngModel #category="ngModel" required="">
+          <ion-select-option *ngFor="let category of categories" [value]="category.id">{{category?.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!category.valid && category.touched">
+        <p class="errorMsg">* Select Category</p>
+      </ion-text> -->
+
+      <ion-item>
+        <ion-input name="category" [(ngModel)]="category" placeholder="Enter New Category" type="text"></ion-input>
+        <!-- <ion-toggle mode="md" color="success" name="isCuisine" [(ngModel)]="isCuisine"></ion-toggle> -->
+      </ion-item>
+
+      <ion-button type="button" size="small" (click)="addCategory()">ADD</ion-button>
+      <ion-button type="button" size="small" (click)="clearCategory()" color="danger">CLEAR</ion-button>
+      <p *ngIf="categories?.length > 0">Categories: {{getArrayAsString(categories)}}</p>
+      <p *ngIf="cuisines?.length > 0">Cuisines: {{getArrayAsString(cuisines)}}</p>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label>
+          Address
+          <p class="ion-text-wrap" *ngIf="location && location?.lat">{{location?.address}}</p>
+        </ion-label>
+        <ion-button fill="outline" size="small" (click)="searchLocation()">Search</ion-button>
+      </ion-item>
+
+      <ion-item>
+        <h4>Cover Image</h4>
+        <input type="file" (change)="preview($event)">
+        <!-- <p>
+          <img *ngIf="coverImage" [src]="coverImage">
+        </p> -->
+      </ion-item>
+
+      <div class="imageDiv">
+        <img *ngIf="coverImage" [src]="coverImage">
+      </div>
+
+    </ion-list>
+
+    <ion-button *ngIf="!isLoading" [disabled]="!f1.valid" expand="block" type="submit">
+      Save
+    </ion-button>
+
+    <div class="ion-text-center" *ngIf="isLoading">
+      <ion-button shape="round" [disabled]="!f1.valid">
+        <ion-spinner name="circles"></ion-spinner>
+      </ion-button>
+    </div>
+
+  </form>
+
+</ion-content>

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Event Ticket</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form #f1="ngForm" (ngSubmit)="onSubmit(f1)">
+    <ion-list lines="none">
+
+      <ion-list-header>
+        <ion-label>Ticket Details</ion-label>
+      </ion-list-header>
+
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-label>Select Event</ion-label>
+        <ion-select (ionChange)="changeEvent($event)" interface="popover" name="event_id" ngModel #event_id="ngModel"
+          required="">
+          <ion-select-option *ngFor="let event of myEvents" [value]="event.uid">{{event?.eventName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!event_id.valid && event_id.touched">
+        <p class="errorMsg">* Select Event</p>
+      </ion-text>
+
+      <!-- <div *ngIf="categories?.length > 0">
+        <ion-item>
+          <ion-label>Select Category</ion-label>
+          <ion-select interface="popover" name="category_id" [(ngModel)]="category" #category_id="ngModel" required>
+            <ion-select-option *ngFor="let category of categories" [value]="category.id">{{category?.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text color="danger" *ngIf="!category_id.valid && category_id.touched" class="ion-text-center">
+          <p class="errorMsg">* Select Category</p>
+        </ion-text>
+      </div> -->
+
+      <h5>Choose Ticket Type</h5>
+      <ion-item color="light" class="ion-margin-bottom">
+        <ion-segment (ionChange)="segmentChanged($event)">
+          <ion-segment-button value="cash">
+            <ion-label>FREE</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="card">
+            <ion-label>CARD</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+
+      <div *ngIf="selectedPayMethod === 'card'">
+        <ion-item color="light" class="ion-margin-bottom">
+          <ion-input type="number" name="price" ngModel #price="ngModel" placeholder="Price" required>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="!price.valid && price.touched">
+          <p class="errorMsg">* Please enter price</p>
+        </ion-text>
+      </div>
+
+      <div>
+        <ion-item color="light" class="ion-margin-bottom">
+          <ion-input type="number" name="numOfTickets" ngModel #numOfTickets="ngModel" placeholder="Number of Tickets"
+            required>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="!numOfTickets.valid && numOfTickets.touched">
+          <p class="errorMsg">* Please enter number of tickets</p>
+        </ion-text>
+      </div>
+
+    </ion-list>
+
+    <ion-button *ngIf="!isLoading" [disabled]="!f1.valid" expand="block" type="submit">
+      Save
+    </ion-button>
+
+    <div class="ion-text-center" *ngIf="isLoading">
+      <ion-button shape="round" [disabled]="!f1.valid">
+        <ion-spinner name="circles"></ion-spinner>
+      </ion-button>
+    </div>
+
+  </form>
+
+</ion-content>
